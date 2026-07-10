@@ -1,0 +1,312 @@
+/* ===== Design layout variants (colors are shared via :root) ===== */
+
+/* --- Option 1: Underline tabs below toggle --- */
+[data-design="1"] #sub-toggle-wrapper:not([hidden]) {
+  display: flex;
+}
+
+[data-design="1"] #sub-toggle-wrapper[hidden] {
+  display: none !important;
+}
+
+[data-design="1"] .tab-group-secondary {
+  display: inline-flex;
+}
+
+[data-design="1"] .tab-group-pill {
+  display: none;
+}
+
+[data-design="1"] #toggle-compound {
+  display: none !important;
+}
+
+[data-design="1"] .toggle-btn--selfmade-simple {
+  display: inline-flex;
+}
+
+/* --- Option 2: Editor dropdown inside AR/3D button --- */
+[data-design="2"] #sub-toggle-wrapper {
+  display: none !important;
+}
+
+[data-design="2"] .toggle-btn--selfmade-simple {
+  display: none !important;
+}
+
+[data-design="2"] #toggle-compound {
+  display: inline-flex !important;
+}
+/* --- Option 3: Editor picker popup --- */
+[data-design="3"] #sub-toggle-wrapper {
+  display: none !important;
+}
+
+[data-design="3"] .editor-picker-popup:not([hidden]) {
+  display: flex;
+}
+
+[data-design="1"] .editor-picker-popup,
+[data-design="2"] .editor-picker-popup {
+  display: none !important;
+}
+
+[data-design="3"] .tab-group-secondary {
+  display: none;
+}
+
+[data-design="3"] .tab-group-pill {
+  display: none;
+}
+
+[data-design="3"] #toggle-compound {
+  display: none !important;
+}
+
+[data-design="3"] .toggle-btn--selfmade-simple {
+  display: inline-flex;
+}
+
+/* Editor picker popup (option 3) */
+.editor-picker-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.editor-picker-popup[hidden] {
+  display: none !important;
+}
+
+.editor-picker-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.editor-picker-popup-card {
+  position: relative;
+  width: min(100%, 380px);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 28px 32px 32px;
+  box-shadow: 0 20px 48px rgba(17, 24, 39, 0.16);
+  text-align: center;
+  animation: pickerIn var(--dur-slow) var(--ease-out);
+}
+
+@keyframes pickerIn {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.editor-picker-popup-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--indigo);
+  margin-bottom: 6px;
+}
+
+.editor-picker-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.editor-picker-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.editor-picker-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 140px;
+  padding: 12px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.editor-picker-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.editor-picker-btn .sparkle-icon {
+  color: var(--magenta);
+}
+
+.editor-picker-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+  border-color: rgba(11, 110, 247, 0.35);
+}
+
+.editor-picker-btn.is-active {
+  color: #0B6EF7;
+  border-color: #0B6EF7;
+  background: #E8F1FE;
+  box-shadow: 0 0 0 3px rgba(11, 110, 247, 0.08);
+}
+
+.toggle-selfmade-group {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-selfmade-group .toggle-btn-compound-tab {
+  padding: 12px 20px;
+}
+
+.toggle-selfmade-group .toggle-btn-compound-tab svg {
+  width: 16px;
+  height: 16px;
+}
+
+.editor-outline-dropdown {
+  display: inline-flex;
+  align-items: stretch;
+  position: relative;
+  border: 1px solid rgba(11, 110, 247, 0.28);
+  border-radius: 999px;
+  background: var(--bg-surface);
+  box-shadow: 0 1px 4px rgba(47, 61, 153, 0.06);
+  overflow: visible;
+}
+
+.toggle-selfmade-group.is-selfmade-active .editor-outline-dropdown {
+  border-color: rgba(11, 110, 247, 0.45);
+  background: #F8FAFF;
+}
+
+.editor-outline-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px 6px 10px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  border-radius: 999px 0 0 999px;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.toggle-selfmade-group.is-selfmade-active .editor-outline-label {
+  color: #0B6EF7;
+}
+
+.editor-outline-label .editor-compound-sparkle {
+  width: 12px;
+  height: 12px;
+  color: var(--magenta);
+}
+
+.editor-outline-label .editor-compound-sparkle[hidden] {
+  display: none;
+}
+
+.editor-outline-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  padding: 0;
+  border: none;
+  border-left: 1px solid rgba(11, 110, 247, 0.16);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 0 999px 999px 0;
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+
+.editor-outline-chevron svg {
+  width: 13px;
+  height: 13px;
+}
+
+.toggle-selfmade-group.is-selfmade-active .editor-outline-chevron {
+  color: #0B6EF7;
+  border-left-color: rgba(11, 110, 247, 0.22);
+}
+
+.editor-outline-chevron:hover,
+.editor-outline-chevron[aria-expanded="true"] {
+  background: rgba(11, 110, 247, 0.08);
+}
+
+.editor-outline-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 140px;
+  list-style: none;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: var(--shadow-soft);
+  z-index: 50;
+}
+
+.editor-outline-menu[hidden] {
+  display: none;
+}
+
+.editor-outline-menu button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.editor-outline-menu button:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.editor-outline-menu button.is-active {
+  background: #E8F1FE;
+  color: #0B6EF7;
+  font-weight: 600;
+}
+
+.editor-outline-menu button svg {
+  width: 12px;
+  height: 12px;
+  color: var(--magenta);
+}
